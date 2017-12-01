@@ -50,8 +50,8 @@ type Strategy struct {
 
 // Priority calculates the priority of a particular job
 func (sg *Strategy) Priority(job *gpool.JobStatus, maxAge, maxPriority float64) float64 {
-	var priority = (Priority(job) / maxPriority) * max(sg.PriorityFactor, 1)
-	var age = (Age(job) / maxAge) * max(sg.AgeFactor, 1)
+	var priority = (Priority(job) / maxPriority) * sg.PriorityFactor
+	var age = (Age(job) / maxAge) * sg.PriorityFactor
 	return age + priority
 }
 
